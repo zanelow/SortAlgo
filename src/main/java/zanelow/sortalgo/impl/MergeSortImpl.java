@@ -24,6 +24,7 @@ public class MergeSortImpl {
             }
             else
                 mergedList.add(intArray[0]);
+
         }
 
         void merge(ArrayList<Integer> leftList, ArrayList<Integer> rightList) {
@@ -65,7 +66,7 @@ public class MergeSortImpl {
             }
         }
 
-        List<Integer> getMergedList() {
+        public List<Integer> getMergedList() {
             return mergedList;
         }
     }
@@ -101,30 +102,6 @@ public class MergeSortImpl {
             else
                 dest[i] = src[q++];
         }
-    }
-
-
-    public static void main(String... args) {
-        Integer[] intArray = {9,6,7,8,4,6,3,2,11,116,15,55,24,32,14,36,21};
-
-        System.out.print("Before sort: "); Arrays.stream(intArray).forEach(x -> System.out.print(x + " ")); System.out.println();
-        long start = System.currentTimeMillis();
-        MergeSort ms = new MergeSort(intArray);
-        long diff = System.currentTimeMillis() - start;
-
-        ms.mergedList.forEach(x -> System.out.print(x + " "));
-        System.out.println("\nArray Size = " + intArray.length + ", Merge List size = " + ms.mergedList.size());
-        System.out.println("time taken = " + diff + " ms");
-
-
-        // control
-        System.out.print("Before sort: "); Arrays.stream(intArray).forEach(x -> System.out.print(x + " ")); System.out.println();
-        start = System.currentTimeMillis();
-        Arrays.sort(intArray);
-        diff = System.currentTimeMillis() - start;
-
-        Stream.of(intArray).forEach(x -> System.out.print(x + " "));
-        System.out.println("\n(control) time taken = " + diff + " ms");
     }
 
 }
