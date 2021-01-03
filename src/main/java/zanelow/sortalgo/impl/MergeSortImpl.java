@@ -5,7 +5,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class MergeSortImpl {
 
@@ -30,37 +29,17 @@ public class MergeSortImpl {
         void merge(ArrayList<Integer> leftList, ArrayList<Integer> rightList) {
             int leftInt, rightInt, leftIndex = 0, rightIndex = 0;
 
-            // turn on for debug
-            /*System.out.print("Left = ");
-            leftList.forEach(x -> System.out.print(x + " "));
-
-            System.out.print(", Right = ");
-            rightList.forEach(x -> System.out.print(x + " "));
-            System.out.println();*/
-
             while (true) {
-                try {
-                    leftInt = leftList.get(leftIndex);
-                    rightInt = rightList.get(rightIndex);
-
-                    if (leftInt <= rightInt) {
-                        mergedList.add(leftInt);
-                        leftIndex++;
-                    }
-                    else {
-                        mergedList.add(rightInt);
-                        rightIndex++;
-                    }
+                if (leftIndex < leftList.size() && rightIndex < rightList.size()) {
+                    if (leftList.get(leftIndex) <= rightList.get(rightIndex)) mergedList.add(leftList.get(leftIndex++));
+                    else mergedList.add(rightList.get(rightIndex++));
                 }
-                catch (IndexOutOfBoundsException e) {
-                    if(leftIndex >= leftList.size() && rightIndex >= rightList.size())
-                        break;
-
-                    if (leftIndex >= leftList.size())
-                        mergedList.addAll(rightList.subList(rightIndex, rightList.size()));
-                    else
-                        mergedList.addAll(leftList.subList(leftIndex, leftList.size()));
-
+                else if (leftIndex == leftList.size() && rightIndex < rightList.size()) {
+                    mergedList.addAll(rightList.subList(rightIndex, rightList.size()));
+                    break;
+                }
+                else if (rightIndex == rightList.size() && leftIndex < leftList.size()) {
+                    mergedList.addAll(leftList.subList(leftIndex, leftList.size()));
                     break;
                 }
             }
@@ -71,7 +50,7 @@ public class MergeSortImpl {
         }
     }
 
-    // from Java 11 implementation - Legacy
+    // from Java 11 implementation - Legacy (just for reference)
     private static void mergeSort(Object[] src,
                                   Object[] dest,
                                   int low,
