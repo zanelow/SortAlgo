@@ -1,3 +1,5 @@
+package zanelow.sortalgo;
+
 import zanelow.sortalgo.impl.MergeSortImpl;
 import zanelow.sortalgo.util.Helper;
 

@@ -8,6 +8,8 @@ import java.util.List;
 
 public class MergeSortImpl {
 
+    private MergeSortImpl() {}
+
     public static class MergeSort {
 
         ArrayList<Integer> mergedList = new ArrayList<>();
@@ -27,7 +29,7 @@ public class MergeSortImpl {
         }
 
         void merge(ArrayList<Integer> leftList, ArrayList<Integer> rightList) {
-            int leftInt, rightInt, leftIndex = 0, rightIndex = 0;
+            int leftIndex = 0, rightIndex = 0;
 
             while (true) {
                 if (leftIndex < leftList.size() && rightIndex < rightList.size()) {
