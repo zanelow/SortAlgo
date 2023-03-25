@@ -7,4 +7,6 @@ A place to refresh my Java skills by implementing sorting algorithm.
 ### Changelog
 1.0.1 - Bring out the main method and added JUnit test
 
+Trying out Git commamd
+
 @author zanelow
